@@ -1,9 +1,10 @@
 package merkledag
 
-import "hash"
+import (
+	"hash"
+)
 
 func Add(store KVStore, node Node, h hash.Hash) []byte {
-	// TODO 将分片写入到KVStore中，并返回Merkle Root
 	switch node.Type() {
 	case FILE:
 		fileNode := node.(File)
@@ -20,5 +21,6 @@ func Add(store KVStore, node Node, h hash.Hash) []byte {
 		}
 		return h.Sum(nil)
 	default:
-	return nil
+		return nil
+	}
 }
